@@ -38,7 +38,7 @@ module.exports = async function handler(req, res) {
   if (req.method === "GET") {
     try {
       await connectToDatabase();
-      const events = await Event.find();
+      const events = await Event.find().lean();
 
       const grouped = {};
       for (const object of events) {
