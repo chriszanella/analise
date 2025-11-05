@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
-imprort dotenv from "dotenv";
-dotenv.config();
+// api/data.js
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const MONGO_URL = process.env.MONGO_URL;
 
@@ -28,7 +28,7 @@ async function connectToDatabase() {
   return cached.conn;
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -61,4 +61,4 @@ export default async function handler(req, res) {
   } else {
     res.status(405).json({ error: "Método não permitido" });
   }
-}
+};
